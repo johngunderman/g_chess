@@ -11,7 +11,7 @@ public class gChess extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        ImageView iv = new ImageView(this);
+        ChessView iv = new ChessView(this);
         setContentView(iv);
     }
 }
