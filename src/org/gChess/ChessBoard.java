@@ -9,30 +9,27 @@ import java.util.ArrayList;
  */
 public class ChessBoard {
 	
-	private ChessPiece[][] grid;
+	private ChessSquare[][] grid;
 	private ArrayList<ChessPiece> whitePieces;
 	private ArrayList<ChessPiece> blackPieces;
 	
 	
 	public ChessBoard() {
-		grid = new ChessPiece[8][8];
-		setGridToNull();
-		
+		grid = new ChessSquare[8][8];
+		initGrid();
 		//TODO: we need to make ourselves some chessPieces here,
 		// but we haven't made our classes yet :(
 	}
 	
+	
 	/**
-	 * This method flushes out our grid to all null values...
-	 * as if it wasn't obvious enough by the name of the method,
-	 * but "good documentation" procedure and all that is sometimes
-	 * overkill. Now lets all go sing camp-fire songs and dance in a
-	 * circle.
+	 * This method puts all our squares in the grid, ready for
+	 * hard-core chess-piece placing action.
 	 */
-	private void setGridToNull() {
+	private void initGrid() {
 		for (int x=0; x < grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y] = null;
+				grid[x][y] = new ChessSquare();
 			}
 		}
 	}

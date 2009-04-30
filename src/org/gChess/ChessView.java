@@ -1,6 +1,9 @@
 package org.gChess;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -15,21 +18,31 @@ import android.view.View;
  */
 public class ChessView extends View {
 
+	private Paint textPaint;
+	private Paint purplePaint;
+	private Paint pinkPaint;
+	private Rect square;
+	
+	
 	public ChessView(Context context) {
 		super(context);
+		square = new Rect();
+		textPaint = new Paint();
+		purplePaint = new Paint();
+		pinkPaint = new Paint();
+		
+		textPaint.setARGB(0,0,0,0);
+		purplePaint.setARGB(0, 230, 0, 230);
+		pinkPaint.setARGB(0, 100, 0, 0);
 		// TODO Auto-generated constructor stub
 	}
-
-	public ChessView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		// TODO Auto-generated constructor stub
+	
+	@Override
+	public void onDraw(Canvas canvas) {
+		canvas.drawRect(square, purplePaint);
+		canvas.drawText("Hello World", 20, 20, textPaint);
 	}
-
-	public ChessView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/**
 	 * get our changes and put 'em on the screen/canvas/thingy.
 	 */
