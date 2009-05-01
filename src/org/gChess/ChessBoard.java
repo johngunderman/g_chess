@@ -12,13 +12,26 @@ public class ChessBoard {
 	private ChessSquare[][] grid;
 	private ArrayList<ChessPiece> whitePieces;
 	private ArrayList<ChessPiece> blackPieces;
+	private int height;
+	private int width;
 	
-	
-	public ChessBoard() {
+	public ChessBoard(int width, int height) {
+		this.height = height;
+		this.width = width;
 		grid = new ChessSquare[8][8];
 		initGrid();
 		//TODO: we need to make ourselves some chessPieces here,
 		// but we haven't made our classes yet :(
+	}
+	
+	
+	
+	/**
+	 * wraps a call to the move method of the chess piece to be moved.
+	 * @param cp
+	 */
+	public void movePiece(ChessPiece cp) {
+		//TODO	
 	}
 	
 	
@@ -29,7 +42,7 @@ public class ChessBoard {
 	private void initGrid() {
 		for (int x=0; x < grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y] = new ChessSquare();
+				grid[x][y] = new ChessSquare(width, height);
 			}
 		}
 	}
