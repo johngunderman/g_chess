@@ -12,14 +12,15 @@ public class ChessSquare {
 	public ChessSquare(int width, int height) {
 		rectShape = new RectShape();
 		rectShape.resize(width, height);
+		occupant = null;
 	}
 	
-	public boolean setOccupant(ChessPiece cp) {
-		if (occupant == null) {
-			occupant = cp;
-			return true;
-		}
-		else return false;
+	public void setOccupant(ChessPiece cp) {
+		occupant = cp;
+	}
+	
+	public ChessPiece getOccupant() {
+		return occupant;
 	}
 	
 }

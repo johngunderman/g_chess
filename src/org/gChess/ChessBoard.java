@@ -46,5 +46,23 @@ public class ChessBoard {
 			}
 		}
 	}
+
+	/**
+	 * @param loc
+	 * @return the ChessPiece at the given Location.
+	 * <code>null</code> if no ChessPiece at that location
+	 */
+	public ChessPiece getPieceAt(Location loc) {
+		ChessSquare cs = grid[loc.getRow()][loc.getCol()];
+		return cs.getOccupant();
+	}
+	
+	/**
+	 * @param loc
+	 * @return true if the Location is occupied, false otherwise.
+	 */
+	public boolean isOccupied(Location loc) {
+		return getPieceAt(loc) != null;
+	}
 	
 }
