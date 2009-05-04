@@ -75,6 +75,8 @@ public abstract class ChessPiece {
 		return returned;
 	}
 	
+	//TODO finish grid access and rules for moving pieces
+	
 	/**
 	 * This method DOES NOT check that all returned locations are not occupied.
 	 * @return an ArrayList of Locations that this chess piece potentially
