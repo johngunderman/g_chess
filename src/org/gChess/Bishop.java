@@ -1,6 +1,9 @@
 package org.gChess;
 
-import java.util.ArrayList;
+import java.util.ArrayList
+
+//Bishop may move diagonally on their color in a straight line provided nothing obstructs their way.
+// Bishops may attack the same way.
 
 public class Bishop extends ChessPiece {
 

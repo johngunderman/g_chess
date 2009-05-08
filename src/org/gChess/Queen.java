@@ -2,6 +2,8 @@ package org.gChess;
 
 import java.util.ArrayList;
 
+//Queen may attack any direction in a straight line provided nothing else blocks her path.
+
 public class Queen extends ChessPiece {
 
 	public Queen(int color, ChessBoard cb) {
