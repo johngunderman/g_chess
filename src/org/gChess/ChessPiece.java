@@ -77,6 +77,11 @@ public abstract class ChessPiece {
 	
 	//TODO finish grid access and rules for moving pieces
 	
+	
+	public void moveTo(Location loc) {
+		//TODO
+	}
+	
 	/**
 	 * This method DOES NOT check that all returned locations are not occupied.
 	 * @return an ArrayList of Locations that this chess piece potentially

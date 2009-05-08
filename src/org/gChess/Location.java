@@ -18,6 +18,20 @@ public class Location {
 		return row;
 	}
 	
+	/**
+	 * @param loc
+	 * @return true if <code>loc</code> is a valid location; false otherwise
+	 */
+	public boolean isValid(Location loc) {
+		if (loc.getRow() < ChessBoard.ROWS 
+				&& loc.getCol() < ChessBoard.COLS
+				&& loc.getRow() > 0
+				&& loc.getCol() > 0 ) {
+			return true;
+		}
+		else return false;
+	}
+	
 	public boolean equals(Location other) {
 		if (other.getCol() == getCol()
 				&& other.getRow() == getRow()) {
