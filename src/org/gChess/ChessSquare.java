@@ -1,6 +1,7 @@
 package org.gChess;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.shapes.RectShape;
@@ -37,6 +38,7 @@ public class ChessSquare {
 	}
 	
 	public void render(Canvas canvas) {
+		rect = new Rect(20,20,40,40);
 		canvas.drawRect(rect, paint);
 	}
 	

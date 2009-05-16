@@ -44,14 +44,17 @@ public class ChessView extends View {
 		
         textPaint.setAntiAlias(true);
         textPaint.setStyle(Paint.Style.FILL);
-		
-		cb = new ChessBoard(getWidth(), getHeight());
+		//TODO: This is just a little hack b/c the size of the window has not been
+		// determined yet, since apparently we dont have focus yet.
+		cb = new ChessBoard(480, 320);
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
 		canvas.drawColor(Color.WHITE);
-		
+		canvas.drawText("Hello World", 20, 20, textPaint);
+		Rect r = new Rect(5,5,20,20);
+		canvas.drawRect(r, GREEN);
 		cb.render(canvas);
 		
 //        int w = canvas.getWidth();

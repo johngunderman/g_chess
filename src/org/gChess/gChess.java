@@ -13,6 +13,5 @@ public class gChess extends Activity {
         setContentView(R.layout.main);
         ChessView cv = new ChessView(this);
         setContentView(cv);
-        cv.invalidate();
     }
 }
