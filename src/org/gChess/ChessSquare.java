@@ -1,18 +1,31 @@
 package org.gChess;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.shapes.RectShape;
 
 public class ChessSquare {
 
 	private Rect rect;
-	private RectShape rectShape;
 	private ChessPiece occupant;
+	private Paint paint;
 	
-	public ChessSquare(int width, int height) {
-		rectShape = new RectShape();
-		rectShape.resize(width, height);
+	public ChessSquare(int squareLength, int squareHeight, Location loc) {
+		int left   = loc.getCol() * squareLength;
+		int top    = loc.getRow() * squareHeight;
+		int right  = left + squareLength;
+		int bottom = top + squareHeight;
+		
+		rect = new Rect(left, top, right, bottom);
 		occupant = null;
+		
+		//even row odd column, odd row even column
+		if (loc.getRow() + loc.getCol() % 2 != 0) {
+			paint = ChessView.GREEN;
+		}
+		//even even and odd odd.
+		else paint = ChessView.CYAN;
 	}
 	
 	public void setOccupant(ChessPiece cp) {
@@ -21,6 +34,10 @@ public class ChessSquare {
 	
 	public ChessPiece getOccupant() {
 		return occupant;
+	}
+	
+	public void render(Canvas canvas) {
+		canvas.drawRect(rect, paint);
 	}
 	
 }

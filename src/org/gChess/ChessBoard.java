@@ -2,6 +2,8 @@ package org.gChess;
 
 import java.util.ArrayList;
 
+import android.graphics.Canvas;
+
 /** 
  * This class is effectively an array of ChessPiece objects.
  * Also included are methods for finding legal moves
@@ -17,6 +19,8 @@ public class ChessBoard {
 	private ArrayList<ChessPiece> blackPieces;
 	private int height;
 	private int width;
+	private int squareLength;
+	private int squareHeight;
 	
 	/**
 	 * Creates a new chess board with width and height in pixels.
@@ -27,6 +31,10 @@ public class ChessBoard {
 	public ChessBoard(int width, int height) {
 		this.height = height;
 		this.width = width;
+		
+		squareLength = width / COLS;
+		squareHeight = height / ROWS;
+		
 		grid = new ChessSquare[ROWS][COLS];
 		initGrid();
 		//TODO: we need to make ourselves some chessPieces here,
@@ -51,7 +59,18 @@ public class ChessBoard {
 	private void initGrid() {
 		for (int x=0; x < grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y] = new ChessSquare(width, height);
+				grid[x][y] = new ChessSquare(squareLength,squareHeight, new Location(y,x));
+			}
+		}
+	}
+	
+	/** draws the chessboard onto the passed canvas.
+	 * @param canvas
+	 */
+	protected void render(Canvas canvas) {
+		for (int x=0; x< grid.length; x++) {
+			for (int y=0; y < grid[x].length; y++) {
+				grid[x][y].render(canvas);
 			}
 		}
 	}

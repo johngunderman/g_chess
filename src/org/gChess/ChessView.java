@@ -2,6 +2,7 @@ package org.gChess;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.shapes.RectShape;
@@ -18,29 +19,47 @@ import android.view.View;
  * I really do appreciate it.
  */
 public class ChessView extends View {
-
+	
+	//Watch out, b/c these babies are
+	//only accessible after the ChessView
+	//class has been instantiated
+	protected static Paint GREEN;
+	protected static Paint CYAN;
+	
 	private Paint textPaint;
-	private Paint purplePaint;
-	private Paint pinkPaint;
 	private ChessBoard cb;
 	
 	public ChessView(Context context) {
 		super(context);
 		
-		textPaint = new Paint();
-		purplePaint = new Paint();
-		pinkPaint = new Paint();
+		CYAN = new Paint();
+		GREEN = new Paint();
 		
-		textPaint.setARGB(0,0,0,0);
-		purplePaint.setARGB(0, 230, 0, 230);
-		pinkPaint.setARGB(0, 100, 0, 0);
+		GREEN.setColor(Color.GREEN);
+		CYAN.setColor(Color.CYAN);
+		
+		textPaint = new Paint();	
+		textPaint.setColor(Color.BLACK);
+
+		
+        textPaint.setAntiAlias(true);
+        textPaint.setStyle(Paint.Style.FILL);
 		
 		cb = new ChessBoard(getWidth(), getHeight());
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
-		canvas.drawText("Hello World", 20, 20, textPaint);
+		canvas.drawColor(Color.WHITE);
+		
+		cb.render(canvas);
+		
+//        int w = canvas.getWidth();
+//        int h = canvas.getHeight();
+//        
+//		canvas.drawRect(new Rect(), GREEN);
+//		canvas.drawRect(5, 5, 20, 40, CYAN);
+//		canvas.drawText("Hello World", 20, 20, textPaint);
 	}
 	
 	/**
