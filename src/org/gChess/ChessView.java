@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 
@@ -53,6 +55,22 @@ public class ChessView extends View {
 		//TODO: This is just a little hack b/c the size of the window has not been
 		// determined yet, since apparently we dont have focus yet.
 		cb = new ChessBoard();
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event){
+		String test = event.getX() + " " + event.getY();
+		Log.i("TOUCH_EVENT", test);
+		//TODO: figure out what square we are touching in.
+		// figure out if there is a chess piece at that square
+		// if yes, then set mode to "select move location"
+		// else exit
+		// if we are already in "select move location" mode
+		// check if the selected square is a valid move location
+		// if it is, move there
+		// if not, exit "select move location" mode
+		//invalidate();
+		return true;
 	}
 	
 	@Override
