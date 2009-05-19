@@ -17,10 +17,6 @@ public class ChessBoard {
 	private ChessSquare[][] grid;
 	private ArrayList<ChessPiece> whitePieces;
 	private ArrayList<ChessPiece> blackPieces;
-	private int height;
-	private int width;
-	private int squareLength;
-	private int squareHeight;
 	
 	/**
 	 * Creates a new chess board with width and height in pixels.
@@ -28,13 +24,7 @@ public class ChessBoard {
 	 * @param width
 	 * @param height
 	 */
-	public ChessBoard(int width, int height) {
-		this.height = height;
-		this.width = width;
-		
-		squareLength = width / COLS;
-		squareHeight = height / ROWS;
-		
+	public ChessBoard() {
 		grid = new ChessSquare[ROWS][COLS];
 		initGrid();
 		//TODO: we need to make ourselves some chessPieces here,
@@ -59,7 +49,7 @@ public class ChessBoard {
 	private void initGrid() {
 		for (int x=0; x < grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y] = new ChessSquare(squareLength,squareHeight, new Location(y,x));
+				grid[x][y] = new ChessSquare(new Location(y,x));
 			}
 		}
 	}
@@ -68,8 +58,11 @@ public class ChessBoard {
 	 * @param canvas
 	 */
 	protected void render(Canvas canvas) {
+		int squareLength = canvas.getWidth() / COLS;
+		int squareHeight = (canvas.getHeight() - 20) / ROWS;
 		for (int x=0; x< grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
+				grid[x][y].setSize(squareLength, squareHeight, new Location(y,x));
 				grid[x][y].render(canvas);
 			}
 		}

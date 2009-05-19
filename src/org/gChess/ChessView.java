@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.Window;
 
 /**
  * ChessView says "I wanna put your stuff on the screen,
@@ -29,6 +30,9 @@ public class ChessView extends View {
 	private Paint textPaint;
 	private ChessBoard cb;
 	
+	private Integer height;
+	private Integer width;
+	
 	public ChessView(Context context) {
 		super(context);
 		
@@ -40,13 +44,15 @@ public class ChessView extends View {
 		
 		textPaint = new Paint();	
 		textPaint.setColor(Color.BLACK);
-
+		
+		height = getHeight();
+		width = getWidth();
 		
         textPaint.setAntiAlias(true);
         textPaint.setStyle(Paint.Style.FILL);
 		//TODO: This is just a little hack b/c the size of the window has not been
 		// determined yet, since apparently we dont have focus yet.
-		cb = new ChessBoard(480, 320);
+		cb = new ChessBoard();
 	}
 	
 	@Override

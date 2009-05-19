@@ -12,17 +12,11 @@ public class ChessSquare {
 	private ChessPiece occupant;
 	private Paint paint;
 	
-	public ChessSquare(int squareLength, int squareHeight, Location loc) {
-		int left   = loc.getCol() * squareLength;
-		int top    = loc.getRow() * squareHeight;
-		int right  = left + squareLength;
-		int bottom = top + squareHeight;
-		
-		rect = new Rect(left, top, right, bottom);
+	public ChessSquare(Location loc) {
 		occupant = null;
 		
 		//even row odd column, odd row even column
-		if (loc.getRow() + loc.getCol() % 2 != 0) {
+		if ((loc.getRow() + loc.getCol()) % 2 != 0) {
 			paint = ChessView.GREEN;
 		}
 		//even even and odd odd.
@@ -38,8 +32,15 @@ public class ChessSquare {
 	}
 	
 	public void render(Canvas canvas) {
-		rect = new Rect(20,20,40,40);
 		canvas.drawRect(rect, paint);
+	}
+
+	public void setSize(int squareLength, int squareHeight, Location loc) {
+		int left   = loc.getCol() * squareLength;
+		int top    = loc.getRow() * squareHeight;
+		int right  = left + squareLength;
+		int bottom = top + squareHeight;
+		rect = new Rect(left, top, right, bottom);
 	}
 	
 }
