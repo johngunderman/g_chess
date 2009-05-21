@@ -32,11 +32,11 @@ public class Location {
 	 * @param loc
 	 * @return true if <code>loc</code> is a valid location; false otherwise
 	 */
-	public boolean isValid(Location loc) {
-		if (loc.getRow() < ChessBoard.ROWS 
-				&& loc.getCol() < ChessBoard.COLS
-				&& loc.getRow() > 0
-				&& loc.getCol() > 0 ) {
+	public boolean isValid() {
+		if (getRow() < ChessBoard.ROWS 
+				&& getCol() < ChessBoard.COLS
+				&& getRow() > 0
+				&& getCol() > 0 ) {
 			return true;
 		}
 		else return false;

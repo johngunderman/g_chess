@@ -72,7 +72,7 @@ public class ChessView extends View {
         textPaint.setStyle(Paint.Style.FILL);
 		//TODO: This is just a little hack b/c the size of the window has not been
 		// determined yet, since apparently we dont have focus yet.
-		cb = new ChessBoard();
+		cb = new ChessBoard(this);
 		
 		actionMode = SELECT_MODE;
 		whosTurn = BLACK_TURN;
@@ -113,19 +113,22 @@ public class ChessView extends View {
 					// make sure to go back to select mode
 					actionMode = SELECT_MODE;
 				}
-			}
+			}		
 			invalidate();
+			Log.i("NOTICE", "invalidating...");
 		}
+
 		return true;
 	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
-		canvas.drawColor(Color.WHITE);
-		canvas.drawText("Hello World", 20, 20, textPaint);
-		Rect r = new Rect(5,5,20,20);
-		canvas.drawRect(r, GREEN);
+		Log.i("NOTICE", "rendering...");
 		cb.render(canvas);
+		//canvas.drawColor(Color.WHITE);
+//		canvas.drawText("Hello World", 20, 20, textPaint);
+//		Rect r = new Rect(5,5,20,20);
+//		canvas.drawRect(r, GREEN);
 	}
 	
 	/**

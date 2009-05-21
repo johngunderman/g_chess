@@ -2,6 +2,9 @@ package org.gChess;
 
 import java.util.ArrayList;
 
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+
 //Pawn moves 1 space forward. During Pawn's first move it my instead move two if both spaces are open
 //Pawn attacks to the forward diagonals one square ahead.
 //When Pawn reaches farthest row it is promoted to any other piece the player selects besides king
@@ -11,6 +14,18 @@ public class Pawn extends ChessPiece {
 
 	public Pawn(int color, ChessBoard cb) {
 		super(color,cb);
+		if (getColor() == ChessPiece.BLACK) {
+			image = new BitmapDrawable( 
+					BitmapFactory.decodeResource(cb.getView().getResources(),
+							R.drawable.black_pawn)
+						);
+		}
+		else if (getColor() == ChessPiece.WHITE) {
+			image = new BitmapDrawable( 
+					BitmapFactory.decodeResource(cb.getView().getResources(),
+							R.drawable.white_pawn)
+					);
+		}
 		// TODO Auto-generated constructor stub
 	}
 

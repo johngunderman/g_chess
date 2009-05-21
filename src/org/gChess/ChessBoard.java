@@ -17,21 +17,24 @@ public class ChessBoard {
 	private ChessSquare[][] grid;
 	private ArrayList<ChessPiece> whitePieces;
 	private ArrayList<ChessPiece> blackPieces;
-	
+	private ChessView view;
 	/**
 	 * Creates a new chess board with width and height in pixels.
 	 * (so we can fit the screen size)
 	 * @param width
 	 * @param height
 	 */
-	public ChessBoard() {
+	public ChessBoard(ChessView view) {
+		this.view = view;
 		grid = new ChessSquare[ROWS][COLS];
 		initGrid();
-		//TODO: we need to make ourselves some chessPieces here,
-		// but we haven't made our classes yet :(
+		putPiece(new Pawn(ChessPiece.BLACK, this), new Location(0,0) );
+		//TODO: we need to make ourselves some chessPieces here
 	}
 	
-	
+	public ChessView getView() {
+		return view;
+	}
 	
 	/**
 	 * wraps a call to the move method of the chess piece to be moved.
@@ -79,8 +82,10 @@ public class ChessBoard {
 	}
 	
 	
-	public void putPiece(Location loc) {
-		//TODO
+	public void putPiece(ChessPiece cp, Location loc) {
+		if (loc.isValid()) {
+			grid[loc.getRow()][loc.getCol()].setOccupant(cp);
+		}
 	}
 	
 	/**

@@ -2,6 +2,9 @@ package org.gChess;
 
 import java.util.ArrayList;
 
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+
 //King may move one sqaure in any direction provided it cannot be attack by an opponent in that square.
 //if a king is under attack it is in check. The player must protect his king by moving it out of harms way or moving another pice to block or capture the attacker.
 //If the king is under attack and cannot escape through any of the aforementioned means then this is checkmate and the game is over with the attacking player being
@@ -15,7 +18,18 @@ public class King extends ChessPiece {
 
 	public King(int color, ChessBoard cb) {
 		super(color, cb);
-		// TODO Auto-generated constructor stub
+		if (getColor() == ChessPiece.BLACK) {
+			image = new BitmapDrawable( 
+					BitmapFactory.decodeResource(cb.getView().getResources(),
+							R.drawable.black_king)
+						);
+		}
+		else if (getColor() == ChessPiece.WHITE) {
+			image = new BitmapDrawable( 
+					BitmapFactory.decodeResource(cb.getView().getResources(),
+							R.drawable.white_king)
+					);
+		}
 	}
 
 	@Override
