@@ -79,7 +79,8 @@ public abstract class ChessPiece {
 	
 	
 	public void moveTo(Location loc) {
-		//TODO
+	
+	movePiece(this, loc);
 	}
 	
 	/**
