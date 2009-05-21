@@ -20,8 +20,15 @@ public class King extends ChessPiece {
 
 	@Override
 	public ArrayList<Location> getMoveLocations() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Location> openLocs = new ArrayList<Location>();
+		for ( int index = 0; index < 8; index++ ){
+			openLocs.add( getLoc().getSpaceInDir(getLoc(), index) );
+		}
+		return openLocs;
+	}
+	
+	public ArrayList<Location> getValidMoveLocations( ArrayList<Location> locs){
+		if ( locs )
 	}
 
 }
