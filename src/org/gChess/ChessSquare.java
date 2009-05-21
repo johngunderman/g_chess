@@ -11,6 +11,7 @@ public class ChessSquare {
 	private Rect rect;
 	private ChessPiece occupant;
 	private Paint paint;
+	private Location loc;
 	
 	public ChessSquare(Location loc) {
 		occupant = null;
@@ -21,6 +22,8 @@ public class ChessSquare {
 		}
 		//even even and odd odd.
 		else paint = ChessView.CYAN;
+		
+		this.loc = loc;
 	}
 	
 	public void setOccupant(ChessPiece cp) {
@@ -43,4 +46,11 @@ public class ChessSquare {
 		rect = new Rect(left, top, right, bottom);
 	}
 	
+	public boolean contains(int x, int y) {
+		return rect.contains(x, y);
+	}
+	
+	public Location getLocation() {
+		return loc;
+	}
 }

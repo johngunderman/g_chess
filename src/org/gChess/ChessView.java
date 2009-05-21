@@ -1,5 +1,7 @@
 package org.gChess;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -35,6 +37,22 @@ public class ChessView extends View {
 	private Integer height;
 	private Integer width;
 	
+	private static final int SELECT_MODE = 0;
+	private static final int MOVE_MODE = 1;
+	
+	/** Tells us whether or not we are in
+	 * selection mode (selecting a piece to move)
+	 * or move mode (selecting a location to move to)
+	 */
+	private int actionMode;
+	
+	private static final int BLACK_TURN = 0;
+	private static final int WHITE_TURN = 1;
+	
+	private int whosTurn;
+	
+	private ChessPiece selected;
+	
 	public ChessView(Context context) {
 		super(context);
 		
@@ -55,21 +73,49 @@ public class ChessView extends View {
 		//TODO: This is just a little hack b/c the size of the window has not been
 		// determined yet, since apparently we dont have focus yet.
 		cb = new ChessBoard();
+		
+		actionMode = SELECT_MODE;
+		whosTurn = BLACK_TURN;
+		selected = null;
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event){
-		String test = event.getX() + " " + event.getY();
-		Log.i("TOUCH_EVENT", test);
-		//TODO: figure out what square we are touching in.
-		// figure out if there is a chess piece at that square
-		// if yes, then set mode to "select move location"
-		// else exit
-		// if we are already in "select move location" mode
-		// check if the selected square is a valid move location
-		// if it is, move there
-		// if not, exit "select move location" mode
-		//invalidate();
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			String test = event.getX() + " " + event.getY();
+			Log.i("TOUCH_EVENT", test);
+			
+			ChessSquare cs = cb.squareAtCoords((int) event.getX(), (int) event.getY());
+			// did we touch a chess square?
+			if (cs != null) {
+				ChessPiece cp = cs.getOccupant();
+				// are we selecting a piece?
+				if (actionMode == SELECT_MODE) {
+					// did our square have a piece on it?
+					if (cp != null) {
+						// does the piece belong to the current player's team?
+						if (cp.getColor() == whosTurn) {
+							selected = cp;
+							actionMode = MOVE_MODE;
+						}
+					}
+				}
+				// we are selecting a move location?
+				else if (actionMode == MOVE_MODE) {
+					ArrayList<Location> locs = selected.getValidMoveLocations();
+					// if the selected location is a valid move location
+					if (cs.getLocation().includedIn(locs)) {
+						cp.moveTo(cs.getLocation());
+					}
+					else {
+						selected = null;
+					}
+					// make sure to go back to select mode
+					actionMode = SELECT_MODE;
+				}
+			}
+			invalidate();
+		}
 		return true;
 	}
 	
@@ -80,13 +126,6 @@ public class ChessView extends View {
 		Rect r = new Rect(5,5,20,20);
 		canvas.drawRect(r, GREEN);
 		cb.render(canvas);
-		
-//        int w = canvas.getWidth();
-//        int h = canvas.getHeight();
-//        
-//		canvas.drawRect(new Rect(), GREEN);
-//		canvas.drawRect(5, 5, 20, 40, CYAN);
-//		canvas.drawText("Hello World", 20, 20, textPaint);
 	}
 	
 	/**
