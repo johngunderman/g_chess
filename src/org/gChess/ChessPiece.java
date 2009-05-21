@@ -80,7 +80,7 @@ public abstract class ChessPiece {
 	
 	public void moveTo(Location loc) {
 	
-	movePiece(this, loc);
+	cb.movePiece(this, loc);
 	}
 	
 	/**

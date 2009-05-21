@@ -20,6 +20,14 @@ public class Location {
 		return row;
 	}
 	
+	public void setCol(int col){
+		this.col = col;
+	}
+	
+	public void setRow(int row){
+		this.row = row;
+	}
+	
 	/**
 	 * @param loc
 	 * @return true if <code>loc</code> is a valid location; false otherwise
@@ -51,5 +59,27 @@ public class Location {
 		return false;
 	}
 	
+	
+	public Location getSpaceInDir(Location loc, int dir){
+		Location space = new Location(loc.getRow(), loc.getCol());
+		if (dir == 0 || dir == 1 || dir == 7)
+		{
+			space.setCol( space.getCol() + 1 );
+		}
+		if (dir == 1 || dir ==2 || dir ==3)
+		{
+			space.setRow( space.getRow() + 1 );
+		}
+		if (dir == 3 || dir == 4 || dir == 5)
+		{
+			space.setCol( space.getCol() - 1 );
+		}
+		if (dir == 5 || dir == 6 || dir == 7 )
+		{
+			space.setRow( space.getRow() - 1 );
+		}
+		
+		return space;
+	}
 	
 }
