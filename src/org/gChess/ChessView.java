@@ -97,11 +97,8 @@ public class ChessView extends View {
 						if (cp.getColor() == whosTurn) {
 							selected = cp;
 							actionMode = MOVE_MODE;
-							return true;
 						}
-						else return true;
 					}
-					else return true;
 				}
 				// we are selecting a move location?
 				else if (actionMode == MOVE_MODE) {
@@ -109,11 +106,9 @@ public class ChessView extends View {
 					// if the selected location is a valid move location
 					if (cs.getLocation().includedIn(locs)) {
 						cp.moveTo(cs.getLocation());
-						return true;
 					}
 					else {
 						selected = null;
-						return true;
 					}
 					// make sure to go back to select mode
 					actionMode = SELECT_MODE;
