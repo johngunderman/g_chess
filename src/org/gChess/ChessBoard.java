@@ -37,7 +37,7 @@ public class ChessBoard {
 	 * wraps a call to the move method of the chess piece to be moved.
 	 * @param cp
 	 */
-	public void movePiece(ChessPiece cp) {
+	public void movePiece(ChessPiece cp, Location loc) {
 		//TODO	
 	}
 	
@@ -89,6 +89,25 @@ public class ChessBoard {
 	 */
 	public boolean isOccupied(Location loc) {
 		return getPieceAt(loc) != null;
+	}
+	
+	
+	/**
+	 * This method WILL RETURN NULL if x,y are not on the board.
+	 * MAKE SURE you check for null values when using this method.
+	 * @param x
+	 * @param y
+	 * @return ChessSquare containing the coords x,y
+	 */
+	public ChessSquare squareAtCoords(int x, int y) {
+		for (ChessSquare[] row : grid) {
+			for (ChessSquare cs : row) {
+				if (cs.contains(x, y)) {
+					return cs;
+				}
+			}
+		}
+		return null;
 	}
 	
 }

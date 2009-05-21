@@ -1,5 +1,7 @@
 package org.gChess;
 
+import java.util.ArrayList;
+
 public class Location {
 	
 	private int col;
@@ -39,4 +41,15 @@ public class Location {
 		}
 		else return false;
 	}
+
+	public boolean includedIn(ArrayList<Location> locs) {
+		for (Location loc : locs) {
+			if (loc.equals(this)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 }
