@@ -119,5 +119,9 @@ public abstract class ChessPiece {
 	public void loadImage(int resource) {
 		image = cb.getView().getResources().getDrawable(resource);
 	}
+
+	public ChessBoard getBoard(){
+		return cb;
+	}
 	
 }

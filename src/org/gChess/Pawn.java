@@ -25,8 +25,21 @@ public class Pawn extends ChessPiece {
 
 	@Override
 	public ArrayList<Location> getMoveLocations() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Location> moves = new ArrayList<Location>();
+		Location loc = getLoc();
+		if (getColor() == ChessPiece.WHITE){
+			loc = loc.getSpaceInDir(loc,0);
+			if (getBoard().getPieceAt(loc) == null){
+				moves.add(loc)
+			}
+			if (getBoard().getPieceAt(loc.getSpaceInDir(loc, 2)) != null){
+				moves.add(loc.getSpaceInDir(loc, 2));
+			}
+			if (getBoard().getPieceAt(loc.getSpaceInDir(loc, 6)) != null){
+				moves.add(loc.getSpaceInDir(loc, 6));
+			}
+		}
+		return moves;
 	}
 	
 
