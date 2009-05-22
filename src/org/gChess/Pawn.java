@@ -34,5 +34,6 @@ public class Pawn extends ChessPiece {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }

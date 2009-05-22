@@ -35,8 +35,8 @@ public class Location {
 	public boolean isValid() {
 		if (getRow() < ChessBoard.ROWS 
 				&& getCol() < ChessBoard.COLS
-				&& getRow() > 0
-				&& getCol() > 0 ) {
+				&& getRow() >= 0
+				&& getCol() >= 0 ) {
 			return true;
 		}
 		else return false;

@@ -44,7 +44,6 @@ public class ChessSquare {
 			bd.draw(canvas);
 		}
 		else canvas.drawRect(rect, paint);
-		canvas.drawText("hello world", 0, 0, ChessView.GREEN);
 	}
 
 	public void setSize(int squareLength, int squareHeight, Location loc) {
@@ -61,5 +60,9 @@ public class ChessSquare {
 	
 	public Location getLocation() {
 		return loc;
+	}
+	
+	public String toString() {
+		return "ChessSquare@(" + loc.getCol() + " " + loc.getRow()+ ")";
 	}
 }

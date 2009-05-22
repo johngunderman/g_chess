@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -125,6 +126,7 @@ public class ChessView extends View {
 	public void onDraw(Canvas canvas) {
 		Log.i("NOTICE", "rendering...");
 		cb.render(canvas);
+
 		//canvas.drawColor(Color.WHITE);
 //		canvas.drawText("Hello World", 20, 20, textPaint);
 //		Rect r = new Rect(5,5,20,20);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 
 /** 
@@ -51,7 +52,14 @@ public abstract class ChessPiece {
 			//TODO: get this off of runtime exception
 			throw new RuntimeException("Cannot create a chess piece who's color is not black or white");
 		}
-		}
+		}            
+
+	}
+	
+	
+	public Bitmap.Config getConfig() {
+		return image.getOpacity() != PixelFormat.OPAQUE ?
+                	Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
 	}
 	
 	/**
@@ -111,33 +119,6 @@ public abstract class ChessPiece {
 	public BitmapDrawable getImage() {
 		return image;
 	}
-	
-	
-//	/** Resizes our bitmapped image to the specified size
-//	 * in pixels.
-//	 */
-//	public Bitmap resizeImage(int height, int width) {
-//		int oldWidth = image.getWidth();
-//        int oldHeight = image.getHeight();
-//        
-//        // calculate the scale - in this case = 0.4f
-//        float scaleWidth = ((float) width) / oldWidth;
-//        float scaleHeight = ((float) height) / oldHeight;
-//       
-//        // create a matrix for the manipulation
-//        Matrix matrix = new Matrix();
-//        // resize the bit map
-//        matrix.postScale(scaleWidth, scaleHeight);
-//
-//        // recreate the new Bitmap
-//        Bitmap resizedBitmap = Bitmap.createBitmap(image, 0, 0,
-//                          width, height, matrix, true);
-//   
-//        // make a Drawable from Bitmap to allow to set the BitMap
-//        // to the ImageView, ImageButton or what ever
-//        BitmapDrawable bmd = new BitmapDrawable(resizedBitmap); 
-//	}
-	
 	
 	
 }

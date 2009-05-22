@@ -3,6 +3,7 @@ package org.gChess;
 import java.util.ArrayList;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 /** 
  * This class is effectively an array of ChessPiece objects.
@@ -86,6 +87,7 @@ public class ChessBoard {
 		if (loc.isValid()) {
 			grid[loc.getRow()][loc.getCol()].setOccupant(cp);
 		}
+		else Log.e("ERROR", "Tried to place ChessPiece at invalid location:" + loc.getRow() + " " + loc.getCol());
 	}
 	
 	/**

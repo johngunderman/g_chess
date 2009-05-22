@@ -17,13 +17,14 @@ public class Bishop extends ChessPiece {
 					BitmapFactory.decodeResource(cb.getView().getResources(),
 							R.drawable.black_bishop)
 						);
-		}
+		} 
 		else if (getColor() == ChessPiece.WHITE) {
 			image = new BitmapDrawable( 
 					BitmapFactory.decodeResource(cb.getView().getResources(),
 							R.drawable.white_bishop)
 					);
 		}
+		image.setVisible(true, true);
 	}
 
 	@Override

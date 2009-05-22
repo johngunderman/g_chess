@@ -41,8 +41,8 @@ public class King extends ChessPiece {
 		return openLocs;
 	}
 	
-	public ArrayList<Location> getValidMoveLocations( ArrayList<Location> locs){
-		if ( locs )
-	}
+//	public ArrayList<Location> getValidMoveLocations( ArrayList<Location> locs){
+//		if ( locs )
+//	}
 
 }
