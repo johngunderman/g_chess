@@ -23,8 +23,26 @@ public class Knight extends ChessPiece {
 
 	@Override
 	public ArrayList<Location> getMoveLocations() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Location> moves = new ArrayList<Location>();
+		Location loc = getLoc();
+		loc = loc.getLocationInDir(Location.FORWARD).getLocationInDir(Location.FORWARD);
+		moves.add(loc.getLocationInDir(Location.RIGHT));
+		moves.add(loc.getLocationInDir(Location.LEFT));
+		loc = getLoc();
+		loc = loc.getLocationInDir(Location.RIGHT).getLocationInDir(Location.RIGHT);
+		moves.add(loc.getLocationInDir(Location.RIGHT));
+		moves.add(loc.getLocationInDir(Location.LEFT));
+		loc = getLoc();
+		loc = loc.getLocationInDir(Location.LEFT).getLocationInDir(Location.LEFT);
+		moves.add(loc.getLocationInDir(Location.RIGHT));
+		moves.add(loc.getLocationInDir(Location.LEFT));
+		loc = getLoc();
+		loc = loc.getLocationInDir(Location.BACK).getLocationInDir(Location.BACK);
+		moves.add(loc.getLocationInDir(Location.RIGHT));
+		moves.add(loc.getLocationInDir(Location.LEFT));
+		
+		
+		return moves;
 	}
 
 }
