@@ -29,8 +29,37 @@ public class Rook extends ChessPiece {
 
 	@Override
 	public ArrayList<Location> getMoveLocations() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Location> moves = new ArrayList<Location>();
+		Location loc = getLoc();
+		for (int index=0; index < 8; index++)
+		{
+			if ( loc.getSpaceInDir(getLoc(), 0).isValid() ){
+				moves.add(loc.getSpaceInDir(getLoc(), 0));
+			}
+			loc = loc.getSpaceInDir(getLoc(), 0);
+		}
+		for (int index=0; index < 8; index++)
+		{
+			if ( loc.getSpaceInDir(getLoc(), 2).isValid() ){
+				moves.add(loc.getSpaceInDir(getLoc(), 2));
+			}
+			loc = loc.getSpaceInDir(getLoc(), 2);
+		}
+		for (int index=0; index < 8; index++)
+		{
+			if ( loc.getSpaceInDir(getLoc(), 4).isValid() ){
+				moves.add(loc.getSpaceInDir(getLoc(), 4));
+			}
+			loc = loc.getSpaceInDir(getLoc(), 4);
+		}
+		for (int index=0; index < 8; index++)
+		{
+			if ( loc.getSpaceInDir(getLoc(), 6).isValid() ){
+				moves.add(loc.getSpaceInDir(getLoc(), 6));
+			}
+			loc = loc.getSpaceInDir(getLoc(), 6);
+		}
+		return moves;
 	}
 
 }
