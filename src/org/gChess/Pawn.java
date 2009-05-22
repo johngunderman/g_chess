@@ -30,7 +30,7 @@ public class Pawn extends ChessPiece {
 		if (getColor() == ChessPiece.WHITE){
 			loc = loc.getSpaceInDir(loc,0);
 			if (getBoard().getPieceAt(loc) == null){
-				moves.add(loc)
+				moves.add(loc);
 			}
 			if (getBoard().getPieceAt(loc.getSpaceInDir(loc, 2)) != null){
 				moves.add(loc.getSpaceInDir(loc, 2));

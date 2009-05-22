@@ -35,8 +35,23 @@ public class King extends ChessPiece {
 		return openLocs;
 	}
 	
-//	public ArrayList<Location> getValidMoveLocations( ArrayList<Location> locs){
-//		if ( locs )
-//	}
+	public ArrayList<Location> getValidMoveLocations( ArrayList<Location> locs){
+		ArrayList<Location> valid = new ArrayList<Location>();
+		for (Location loc : locs){
+			if(getBoard().getPieceAt(loc) != null){
+				if(loc.isValid()){
+					if(getBoard().getPieceAt(loc).getColor() != getColor())
+					valid.add(loc);
+				}
+				
+			}
+			if (loc.isValid()){
+				if(loc == null){
+					valid.add(loc);
+				}
+			}
+		}
+		return valid;
+	}
 
 }
