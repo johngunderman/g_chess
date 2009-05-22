@@ -4,12 +4,29 @@ import java.util.ArrayList;
 
 public class Location {
 	
+	static public final int FORWARD = 0;
+	static public final int FORWARD_RIGHT = 1;
+	static public final int RIGHT = 2;
+	static public final int BACK_RIGHT = 3;
+	static public final int BACK = 4;
+	static public final int BACK_LEFT = 5;
+	static public final int LEFT = 6;
+	static public final int FORWARD_LEFT = 7;
+	
+	
 	private int col;
 	private int row;
+	
+	/** Direction can be -1 or 1
+	 * where -1 is facing a relative down
+	 * and 1 is facing a relative up
+	 */
+	private int direction;
 	
 	public Location(int row, int col) {
 		this.row = row;
 		this.col = col;
+		this.direction = 1;
 	}
 
 	public int getCol() {
@@ -60,26 +77,27 @@ public class Location {
 	}
 	
 	
-	public Location getSpaceInDir(Location loc, int dir){
-		Location space = new Location(loc.getRow(), loc.getCol());
-		if (dir == 0 || dir == 1 || dir == 7)
-		{
-			space.setCol( space.getCol() + 1 );
-		}
-		if (dir == 1 || dir ==2 || dir ==3)
-		{
-			space.setRow( space.getRow() + 1 );
-		}
-		if (dir == 3 || dir == 4 || dir == 5)
-		{
-			space.setCol( space.getCol() - 1 );
-		}
-		if (dir == 5 || dir == 6 || dir == 7 )
-		{
-			space.setRow( space.getRow() - 1 );
+	public Location getLocationInDir(int dir){
+		int row = getRow();
+		int col = getCol();
+		
+		if (dir == FORWARD || dir == FORWARD_RIGHT || dir == FORWARD_LEFT) {
+			col -= direction;
 		}
 		
-		return space;
+		if (dir == FORWARD_RIGHT || dir == RIGHT || dir == BACK_RIGHT) {
+			row += direction;
+		}
+		
+		if (dir == BACK_RIGHT || dir == BACK || dir == BACK_LEFT) {
+			col += direction;
+		}
+		
+		if (dir == BACK_LEFT || dir == LEFT || dir == FORWARD_LEFT ){
+			row -= direction;
+		}
+		
+		return new Location(row, col);
 	}
 	
 }

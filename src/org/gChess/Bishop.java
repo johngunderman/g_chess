@@ -29,10 +29,10 @@ public class Bishop extends ChessPiece {
 		Location loc = getLoc();
 		for (int index = 1; index < 8; index = index + 2){
 			for(int ctr = 0; ctr < 8 ; ctr++){
-				if(loc.getSpaceInDir(loc, index).isValid() ){
-					moves.add( loc.getSpaceInDir(loc, index) );
+				if(loc.getLocationInDir(index).isValid() ){
+					moves.add( loc.getLocationInDir(index) );
 				}
-				loc = loc.getSpaceInDir(loc, index);
+				loc = loc.getLocationInDir( index);
 			}
 			loc = getLoc();
 		}

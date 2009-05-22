@@ -40,7 +40,6 @@ public class ChessSquare {
 	public void render(Canvas canvas) {
 		canvas.drawRect(rect, paint);
 		if (occupant != null) {
-			Log.i("SQUARE_INFO", "square occupied.");
 			Drawable d = occupant.getImage();
 			d.setBounds(rect);
 			d.draw(canvas);

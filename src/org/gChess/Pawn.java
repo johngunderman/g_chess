@@ -28,15 +28,15 @@ public class Pawn extends ChessPiece {
 		ArrayList<Location> moves = new ArrayList<Location>();
 		Location loc = getLoc();
 		if (getColor() == ChessPiece.WHITE){
-			loc = loc.getSpaceInDir(loc,0);
+			loc = loc.getLocationInDir(Location.FORWARD);
 			if (getBoard().getPieceAt(loc) == null){
-				moves.add(loc)
+				moves.add(loc);
 			}
-			if (getBoard().getPieceAt(loc.getSpaceInDir(loc, 2)) != null){
-				moves.add(loc.getSpaceInDir(loc, 2));
+			if (getBoard().getPieceAt(loc.getLocationInDir(Location.RIGHT)) != null){
+				moves.add(loc.getLocationInDir(Location.RIGHT));
 			}
-			if (getBoard().getPieceAt(loc.getSpaceInDir(loc, 6)) != null){
-				moves.add(loc.getSpaceInDir(loc, 6));
+			if (getBoard().getPieceAt(loc.getLocationInDir(Location.LEFT)) != null){
+				moves.add(loc.getLocationInDir(Location.LEFT));
 			}
 		}
 		return moves;

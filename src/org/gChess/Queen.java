@@ -26,10 +26,10 @@ public class Queen extends ChessPiece {
 		Location loc = getLoc();
 		for (int index =0; index < 8; index++){
 			for (int ctr = 0; ctr < 8; ctr++){
-				if(loc.getSpaceInDir(loc, index).isValid() ){
-					moves.add( loc.getSpaceInDir(loc, index) );
+				if(loc.getLocationInDir(index).isValid() ){
+					moves.add( loc.getLocationInDir(index) );
 				}
-				loc = loc.getSpaceInDir(loc, index);
+				loc = loc.getLocationInDir(index);
 			}
 			loc = getLoc();
 		}

@@ -98,6 +98,7 @@ public class ChessView extends View {
 						if (cp.getColor() == whosTurn) {
 							selected = cp;
 							actionMode = MOVE_MODE;
+							Log.i("EVENT", "Selection of: " + selected);
 						}
 					}
 				}

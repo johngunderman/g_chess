@@ -27,31 +27,31 @@ public class Rook extends ChessPiece {
 		Location loc = getLoc();
 		for (int index=0; index < 8; index++)
 		{
-			if ( loc.getSpaceInDir(loc, 0).isValid() ){
-				moves.add(loc.getSpaceInDir(loc, 0));
+			if ( loc.getLocationInDir(Location.FORWARD).isValid() ){
+				moves.add(loc.getLocationInDir(Location.FORWARD));
 			}
-			loc = loc.getSpaceInDir(loc, 0);
+			loc = loc.getLocationInDir(Location.FORWARD);
 		}
 		for (int index=0; index < 8; index++)
 		{
-			if ( loc.getSpaceInDir(loc, 2).isValid() ){
-				moves.add(loc.getSpaceInDir(loc, 2));
+			if ( loc.getLocationInDir(Location.RIGHT).isValid() ){
+				moves.add(loc.getLocationInDir(Location.RIGHT));
 			}
-			loc = loc.getSpaceInDir(loc, 2);
+			loc = loc.getLocationInDir(Location.RIGHT);
 		}
 		for (int index=0; index < 8; index++)
 		{
-			if ( loc.getSpaceInDir(loc, 4).isValid() ){
-				moves.add(loc.getSpaceInDir(loc, 4));
+			if ( loc.getLocationInDir(Location.BACK).isValid() ){
+				moves.add(loc.getLocationInDir(Location.BACK));
 			}
-			loc = loc.getSpaceInDir(loc, 4);
+			loc = loc.getLocationInDir(Location.BACK);
 		}
 		for (int index=0; index < 8; index++)
 		{
-			if ( loc.getSpaceInDir(loc, 6).isValid() ){
-				moves.add(loc.getSpaceInDir(loc, 6));
+			if ( loc.getLocationInDir(Location.LEFT).isValid() ){
+				moves.add(loc.getLocationInDir(Location.LEFT));
 			}
-			loc = loc.getSpaceInDir(loc, 6);
+			loc = loc.getLocationInDir(Location.LEFT);
 		}
 		return moves;
 	}

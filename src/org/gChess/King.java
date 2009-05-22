@@ -30,7 +30,7 @@ public class King extends ChessPiece {
 	public ArrayList<Location> getMoveLocations() {
 		ArrayList<Location> openLocs = new ArrayList<Location>();
 		for ( int index = 0; index < 8; index++ ){
-			openLocs.add( getLoc().getSpaceInDir(getLoc(), index) );
+			openLocs.add( getLoc().getLocationInDir(index));
 		}
 		return openLocs;
 	}
