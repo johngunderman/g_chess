@@ -13,6 +13,9 @@ public class Location {
 	static public final int LEFT = 6;
 	static public final int FORWARD_LEFT = 7;
 	
+	static public final int DOWN = -1;
+	static public final int UP = 1;
+	
 	
 	private int col;
 	private int row;
@@ -20,6 +23,7 @@ public class Location {
 	/** Direction can be -1 or 1
 	 * where -1 is facing a relative down
 	 * and 1 is facing a relative up
+	 * Use DOWN and UP.
 	 */
 	private int direction;
 	
@@ -98,6 +102,10 @@ public class Location {
 		}
 		
 		return new Location(row, col);
+	}
+	
+	public void setDirection(int dir) {
+		direction = dir;
 	}
 	
 }
