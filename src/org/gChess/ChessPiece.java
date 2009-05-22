@@ -57,11 +57,6 @@ public abstract class ChessPiece {
 	}
 	
 	
-	public Bitmap.Config getConfig() {
-		return image.getOpacity() != PixelFormat.OPAQUE ?
-                	Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
-	}
-	
 	/**
 	 * return true if there are ANY valid locations we can move to; 
 	 * returns false otherwise.

@@ -3,6 +3,9 @@ package org.gChess;
 import java.util.ArrayList;
 
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 
 //Bishop may move diagonally on their color in a straight line provided nothing obstructs their way.
@@ -24,7 +27,6 @@ public class Bishop extends ChessPiece {
 							R.drawable.white_bishop)
 					);
 		}
-		image.setVisible(true, true);
 	}
 
 	@Override
