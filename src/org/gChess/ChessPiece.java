@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 /** 
  * This class contains all the base methods for each chess piece
@@ -21,7 +22,7 @@ public abstract class ChessPiece {
 	public final static int BLACK = 0;
 	public final static int WHITE = 1;
 	
-	protected BitmapDrawable image;
+	protected Drawable image;
 	
 	private ChessBoard cb;
 	
@@ -111,9 +112,12 @@ public abstract class ChessPiece {
 		return color;
 	}
 	
-	public BitmapDrawable getImage() {
+	public Drawable getImage() {
 		return image;
 	}
 	
+	public void loadImage(int resource) {
+		image = cb.getView().getResources().getDrawable(resource);
+	}
 	
 }

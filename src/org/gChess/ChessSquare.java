@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.Log;
 
@@ -37,13 +38,13 @@ public class ChessSquare {
 	}
 	
 	public void render(Canvas canvas) {
+		canvas.drawRect(rect, paint);
 		if (occupant != null) {
 			Log.i("SQUARE_INFO", "square occupied.");
-			BitmapDrawable bd = occupant.getImage();
-			bd.setBounds(rect);
-			bd.draw(canvas);
+			Drawable d = occupant.getImage();
+			d.setBounds(rect);
+			d.draw(canvas);
 		}
-		else canvas.drawRect(rect, paint);
 	}
 
 	public void setSize(int squareLength, int squareHeight, Location loc) {

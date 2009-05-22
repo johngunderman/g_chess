@@ -3,6 +3,7 @@ package org.gChess;
 import java.util.ArrayList;
 
 import android.graphics.Canvas;
+import android.location.Address;
 import android.util.Log;
 
 /** 
@@ -29,7 +30,7 @@ public class ChessBoard {
 		this.view = view;
 		grid = new ChessSquare[ROWS][COLS];
 		initGrid();
-		putPiece(new Pawn(ChessPiece.BLACK, this), new Location(0,0) );
+		initPieces();
 		//TODO: we need to make ourselves some chessPieces here
 	}
 	
@@ -66,8 +67,8 @@ public class ChessBoard {
 		int squareHeight = (canvas.getHeight() - 20) / ROWS;
 		for (int x=0; x< grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y].setSize(squareLength, squareHeight, new Location(y,x));
-				grid[x][y].render(canvas);
+				grid[y][x].setSize(squareLength, squareHeight, new Location(y,x));
+				grid[y][x].render(canvas);
 			}
 		}
 	}
@@ -115,6 +116,36 @@ public class ChessBoard {
 			}
 		}
 		return null;
+	}
+	
+	private void initPieces() {
+		putPiece(new Rook(ChessPiece.BLACK, this), new Location(0,0));
+		putPiece(new Knight(ChessPiece.BLACK, this), new Location(0,1));
+		putPiece(new Bishop(ChessPiece.BLACK, this), new Location(0,2));
+		putPiece(new Queen(ChessPiece.BLACK, this), new Location(0,3));
+		putPiece(new King(ChessPiece.BLACK, this), new Location(0,4));
+		putPiece(new Bishop(ChessPiece.BLACK, this), new Location(0,5));
+		putPiece(new Knight(ChessPiece.BLACK, this), new Location(0,6));
+		putPiece(new Rook(ChessPiece.BLACK, this), new Location(0,7));
+		
+		for (int x = 0; x < 8; x++) {
+			putPiece(new Pawn(ChessPiece.BLACK, this), new Location(1,x));
+		}
+
+		putPiece(new Rook(ChessPiece.WHITE, this), new Location(7,0));
+		putPiece(new Knight(ChessPiece.WHITE, this), new Location(7,1));
+		putPiece(new Bishop(ChessPiece.WHITE, this), new Location(7,2));
+		putPiece(new Queen(ChessPiece.WHITE, this), new Location(7,3));
+		putPiece(new King(ChessPiece.WHITE, this), new Location(7,4));
+		putPiece(new Bishop(ChessPiece.WHITE, this), new Location(7,5));
+		putPiece(new Knight(ChessPiece.WHITE, this), new Location(7,6));
+		putPiece(new Rook(ChessPiece.WHITE, this), new Location(7,7));
+		
+		for (int x = 0; x < 8; x++) {
+			putPiece(new Pawn(ChessPiece.WHITE, this), new Location(6,x));
+		}
+
+
 	}
 	
 }

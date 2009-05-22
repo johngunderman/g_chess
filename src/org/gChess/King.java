@@ -19,16 +19,10 @@ public class King extends ChessPiece {
 	public King(int color, ChessBoard cb) {
 		super(color, cb);
 		if (getColor() == ChessPiece.BLACK) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.black_king)
-						);
+			loadImage(R.drawable.black_king);
 		}
 		else if (getColor() == ChessPiece.WHITE) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.white_king)
-					);
+			loadImage(R.drawable.white_king);
 		}
 	}
 

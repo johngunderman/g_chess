@@ -13,16 +13,10 @@ public class Rook extends ChessPiece {
 	public Rook(int color, ChessBoard cb) {
 		super(color,cb);
 		if (getColor() == ChessPiece.BLACK) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.black_rook)
-						);
+			loadImage(R.drawable.black_rook);
 		}
 		else if (getColor() == ChessPiece.WHITE) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.white_rook)
-					);
+			loadImage(R.drawable.white_rook);
 		}
 		// TODO Auto-generated constructor stub
 	}

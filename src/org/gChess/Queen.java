@@ -12,16 +12,10 @@ public class Queen extends ChessPiece {
 	public Queen(int color, ChessBoard cb) {
 		super(color, cb);
 		if (getColor() == ChessPiece.BLACK) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.black_queen)
-						);
+			loadImage(R.drawable.black_queen);
 		}
 		else if (getColor() == ChessPiece.WHITE) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.white_queen)
-					);
+			loadImage(R.drawable.white_queen);
 		}
 		// TODO Auto-generated constructor stub
 	}

@@ -15,16 +15,10 @@ public class Pawn extends ChessPiece {
 	public Pawn(int color, ChessBoard cb) {
 		super(color,cb);
 		if (getColor() == ChessPiece.BLACK) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.black_pawn)
-						);
+			loadImage(R.drawable.black_pawn);
 		}
 		else if (getColor() == ChessPiece.WHITE) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.white_pawn)
-					);
+			loadImage(R.drawable.white_pawn);
 		}
 		// TODO Auto-generated constructor stub
 	}

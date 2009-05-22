@@ -13,16 +13,10 @@ public class Knight extends ChessPiece {
 	public Knight(int color, ChessBoard cb) {
 		super(color,cb);
 		if (getColor() == ChessPiece.BLACK) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.black_knight)
-						);
+			loadImage(R.drawable.black_knight);
 		}
 		else if (getColor() == ChessPiece.WHITE) {
-			image = new BitmapDrawable( 
-					BitmapFactory.decodeResource(cb.getView().getResources(),
-							R.drawable.white_knight)
-					);
+			loadImage(R.drawable.white_knight);
 		}
 		// TODO Auto-generated constructor stub
 	}
