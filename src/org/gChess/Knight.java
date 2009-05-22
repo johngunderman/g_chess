@@ -30,12 +30,12 @@ public class Knight extends ChessPiece {
 		moves.add(loc.getLocationInDir(Location.LEFT));
 		loc = getLoc();
 		loc = loc.getLocationInDir(Location.RIGHT).getLocationInDir(Location.RIGHT);
-		moves.add(loc.getLocationInDir(Location.RIGHT));
-		moves.add(loc.getLocationInDir(Location.LEFT));
+		moves.add(loc.getLocationInDir(Location.FORWARD));
+		moves.add(loc.getLocationInDir(Location.BACK));
 		loc = getLoc();
 		loc = loc.getLocationInDir(Location.LEFT).getLocationInDir(Location.LEFT);
-		moves.add(loc.getLocationInDir(Location.RIGHT));
-		moves.add(loc.getLocationInDir(Location.LEFT));
+		moves.add(loc.getLocationInDir(Location.FORWARD));
+		moves.add(loc.getLocationInDir(Location.BACK));
 		loc = getLoc();
 		loc = loc.getLocationInDir(Location.BACK).getLocationInDir(Location.BACK);
 		moves.add(loc.getLocationInDir(Location.RIGHT));
