@@ -31,7 +31,6 @@ public class ChessBoard {
 		grid = new ChessSquare[ROWS][COLS];
 		initGrid();
 		initPieces();
-		//TODO: we need to make ourselves some chessPieces here
 	}
 	
 	public ChessView getView() {
@@ -43,9 +42,14 @@ public class ChessBoard {
 	 * @param cp
 	 */
 	public void movePiece(ChessPiece cp, Location loc) {
-		//TODO	
+		remove(cp.getLoc());
+		putPiece(cp, loc);
 	}
 	
+	
+	public void remove(Location loc) {
+		grid[loc.getRow()][loc.getCol()].setOccupant(null);
+	}
 	
 	/**
 	 * This method puts all our squares in the grid, ready for
@@ -87,6 +91,7 @@ public class ChessBoard {
 	public void putPiece(ChessPiece cp, Location loc) {
 		if (loc.isValid()) {
 			grid[loc.getRow()][loc.getCol()].setOccupant(cp);
+			cp.setLoc(loc);
 		}
 		else Log.e("ERROR", "Tried to place ChessPiece at invalid location:" + loc.getRow() + " " + loc.getCol());
 	}
@@ -147,30 +152,30 @@ public class ChessBoard {
 	}
 	
 	private void initPieces() {
-		putPiece(new Rook(ChessPiece.BLACK, this), new Location(0,0));
-		putPiece(new Knight(ChessPiece.BLACK, this), new Location(0,1));
-		putPiece(new Bishop(ChessPiece.BLACK, this), new Location(0,2));
-		putPiece(new Queen(ChessPiece.BLACK, this), new Location(0,3));
-		putPiece(new King(ChessPiece.BLACK, this), new Location(0,4));
-		putPiece(new Bishop(ChessPiece.BLACK, this), new Location(0,5));
-		putPiece(new Knight(ChessPiece.BLACK, this), new Location(0,6));
-		putPiece(new Rook(ChessPiece.BLACK, this), new Location(0,7));
+		putPiece(new Rook(ChessPiece.BLACK, new Location(0,0), this), new Location(0,0));
+		putPiece(new Knight(ChessPiece.BLACK, new Location(0,1), this), new Location(0,1));
+		putPiece(new Bishop(ChessPiece.BLACK, new Location(0,2), this), new Location(0,2));
+		putPiece(new Queen(ChessPiece.BLACK, new Location(0,3), this), new Location(0,3));
+		putPiece(new King(ChessPiece.BLACK, new Location(0,4), this), new Location(0,4));
+		putPiece(new Bishop(ChessPiece.BLACK, new Location(0,5), this), new Location(0,5));
+		putPiece(new Knight(ChessPiece.BLACK, new Location(0,6), this), new Location(0,6));
+		putPiece(new Rook(ChessPiece.BLACK, new Location(0,7), this), new Location(0,7));
 		
 		for (int x = 0; x < 8; x++) {
-			putPiece(new Pawn(ChessPiece.BLACK, this), new Location(1,x));
+			putPiece(new Pawn(ChessPiece.BLACK, new Location(1,x),this), new Location(1,x));
 		}
 
-		putPiece(new Rook(ChessPiece.WHITE, this), new Location(7,0));
-		putPiece(new Knight(ChessPiece.WHITE, this), new Location(7,1));
-		putPiece(new Bishop(ChessPiece.WHITE, this), new Location(7,2));
-		putPiece(new Queen(ChessPiece.WHITE, this), new Location(7,3));
-		putPiece(new King(ChessPiece.WHITE, this), new Location(7,4));
-		putPiece(new Bishop(ChessPiece.WHITE, this), new Location(7,5));
-		putPiece(new Knight(ChessPiece.WHITE, this), new Location(7,6));
-		putPiece(new Rook(ChessPiece.WHITE, this), new Location(7,7));
-		
+		putPiece(new Rook(ChessPiece.WHITE, new Location(7,0), this), new Location(7,0));
+		putPiece(new Knight(ChessPiece.WHITE, new Location(7,1), this), new Location(7,1));
+		putPiece(new Bishop(ChessPiece.WHITE, new Location(7,2), this), new Location(7,2));
+		putPiece(new Queen(ChessPiece.WHITE, new Location(7,3), this), new Location(7,3));
+		putPiece(new King(ChessPiece.WHITE, new Location(7,4), this), new Location(7,4));
+		putPiece(new Bishop(ChessPiece.WHITE, new Location(7,5), this), new Location(7,5));
+		putPiece(new Knight(ChessPiece.WHITE, new Location(7,6), this), new Location(7,6));
+		putPiece(new Rook(ChessPiece.WHITE, new Location(7,7), this), new Location(7,7));
+
 		for (int x = 0; x < 8; x++) {
-			putPiece(new Pawn(ChessPiece.WHITE, this), new Location(6,x));
+			putPiece(new Pawn(ChessPiece.WHITE, new Location(6,x),this), new Location(6,x));
 		}
 
 

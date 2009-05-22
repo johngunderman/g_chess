@@ -13,8 +13,8 @@ import android.graphics.drawable.BitmapDrawable;
 
 public class Bishop extends ChessPiece {
 
-	public Bishop(int color, ChessBoard cb) {
-		super(color,cb);
+	public Bishop(int color, Location loc, ChessBoard cb) {
+		super(color, loc, cb);
 		if (getColor() == ChessPiece.BLACK) {
 			loadImage(R.drawable.black_bishop);
 		}

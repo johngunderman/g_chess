@@ -37,9 +37,9 @@ public abstract class ChessPiece {
 	private Location loc;
 	
 	
-	public ChessPiece(int color, ChessBoard cb) {
+	public ChessPiece(int color, Location loc, ChessBoard cb) {
 		this.cb = cb;
-		
+		this.loc = loc;
 		switch (color) {
 		case BLACK: {
 			this.color = BLACK;
@@ -110,7 +110,7 @@ public abstract class ChessPiece {
 		return loc;
 	}
 
-	private void setLoc(Location loc) {
+	public void setLoc(Location loc) {
 		this.loc = loc;
 	}
 

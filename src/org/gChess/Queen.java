@@ -9,8 +9,8 @@ import android.graphics.drawable.BitmapDrawable;
 
 public class Queen extends ChessPiece {
 
-	public Queen(int color, ChessBoard cb) {
-		super(color, cb);
+	public Queen(int color, Location loc, ChessBoard cb) {
+		super(color, loc, cb);
 		if (getColor() == ChessPiece.BLACK) {
 			loadImage(R.drawable.black_queen);
 		}

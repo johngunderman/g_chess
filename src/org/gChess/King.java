@@ -16,8 +16,8 @@ import android.graphics.drawable.BitmapDrawable;
 
 public class King extends ChessPiece {
 
-	public King(int color, ChessBoard cb) {
-		super(color, cb);
+	public King(int color, Location loc, ChessBoard cb) {
+		super(color, loc,  cb);
 		if (getColor() == ChessPiece.BLACK) {
 			loadImage(R.drawable.black_king);
 		}

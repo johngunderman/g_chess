@@ -108,4 +108,8 @@ public class Location {
 		direction = dir;
 	}
 	
+	public String toString() {
+		return "(" + getRow() + ", " + getCol() + ")";
+	}
+	
 }

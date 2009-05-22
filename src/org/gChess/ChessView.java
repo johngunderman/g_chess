@@ -76,7 +76,7 @@ public class ChessView extends View {
 		cb = new ChessBoard(this);
 		
 		actionMode = SELECT_MODE;
-		whosTurn = BLACK_TURN;
+		whosTurn = WHITE_TURN;
 		selected = null;
 	}
 	
@@ -108,6 +108,7 @@ public class ChessView extends View {
 					// if the selected location is a valid move location
 					if (cs.getLocation().includedIn(locs)) {
 						cp.moveTo(cs.getLocation());
+						whosTurn = BLACK_TURN;
 					}
 					else {
 						selected = null;
