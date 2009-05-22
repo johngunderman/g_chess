@@ -86,19 +86,19 @@ public class Location {
 		int col = getCol();
 		
 		if (dir == FORWARD || dir == FORWARD_RIGHT || dir == FORWARD_LEFT) {
-			col -= direction;
+			row -= direction;
 		}
 		
 		if (dir == FORWARD_RIGHT || dir == RIGHT || dir == BACK_RIGHT) {
-			row += direction;
-		}
-		
-		if (dir == BACK_RIGHT || dir == BACK || dir == BACK_LEFT) {
 			col += direction;
 		}
 		
+		if (dir == BACK_RIGHT || dir == BACK || dir == BACK_LEFT) {
+			row += direction;
+		}
+		
 		if (dir == BACK_LEFT || dir == LEFT || dir == FORWARD_LEFT ){
-			row -= direction;
+			col -= direction;
 		}
 		
 		return new Location(row, col);

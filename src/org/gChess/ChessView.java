@@ -47,7 +47,7 @@ public class ChessView extends View {
 	 */
 	private int actionMode;
 	
-	private static final int BLACK_TURN = 0;
+	private static final int BLACK_TURN = -1;
 	private static final int WHITE_TURN = 1;
 	
 	private int whosTurn;
@@ -107,8 +107,8 @@ public class ChessView extends View {
 					ArrayList<Location> locs = selected.getValidMoveLocations();
 					// if the selected location is a valid move location
 					if (cs.getLocation().includedIn(locs)) {
-						cp.moveTo(cs.getLocation());
-						whosTurn = BLACK_TURN;
+						selected.moveTo(cs.getLocation());
+						whosTurn = -whosTurn;
 					}
 					else {
 						selected = null;

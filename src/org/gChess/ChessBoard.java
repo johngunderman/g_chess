@@ -58,7 +58,7 @@ public class ChessBoard {
 	private void initGrid() {
 		for (int x=0; x < grid.length; x++) {
 			for (int y=0; y < grid[x].length; y++) {
-				grid[x][y] = new ChessSquare(new Location(y,x));
+				grid[y][x] = new ChessSquare(new Location(y,x));
 			}
 		}
 	}
@@ -83,8 +83,12 @@ public class ChessBoard {
 	 * <code>null</code> if no ChessPiece at that location
 	 */
 	public ChessPiece getPieceAt(Location loc) {
-		ChessSquare cs = grid[loc.getRow()][loc.getCol()];
-		return cs.getOccupant();
+		if (loc.isValid()) {
+			ChessSquare cs = grid[loc.getRow()][loc.getCol()];
+			return cs.getOccupant();
+		}
+		Log.e("ACCESS ERROR", "getPieceAt called on bad location " + loc);
+		return null;
 	}
 	
 	
