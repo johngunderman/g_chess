@@ -27,16 +27,45 @@ public class Bishop extends ChessPiece {
 	public ArrayList<Location> getMoveLocations() {
 		ArrayList<Location> moves = new ArrayList<Location>();
 		Location loc = getLoc();
-		for (int index = 1; index < 8; index = index + 2){
-			for(int ctr = 0; ctr < 8 ; ctr++){
-				if(loc.getLocationInDir(index).isValid() ){
-					moves.add( loc.getLocationInDir(index) );
-				}
-				loc = loc.getLocationInDir( index);
+		
+		for (int index = 1; index < 8; index += 2) {
+			Location nextLoc = loc.getLocationInDir(index);
+			
+			while (nextLoc.isValid()) {
+				moves.add(loc.getLocationInDir(index));
+				loc = nextLoc;
 			}
-			loc = getLoc();
 		}
 		return moves;
+	}
+	
+	@Override
+	public ArrayList<Location> getValidMoveLocations() {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		
+		ArrayList<Location> temp;
+		
+		temp = getBoard().locsInDirUntilBlocked(getLoc(), 
+				Location.BACK_LEFT, 
+				getColor());
+		locs.addAll(temp);
+		
+		temp = getBoard().locsInDirUntilBlocked(getLoc(), 
+				Location.BACK_RIGHT, 
+				getColor());
+		locs.addAll(temp);
+		
+		temp = getBoard().locsInDirUntilBlocked(getLoc(), 
+				Location.FORWARD_LEFT, 
+				getColor());
+		locs.addAll(temp);
+		
+		temp = getBoard().locsInDirUntilBlocked(getLoc(), 
+				Location.FORWARD_RIGHT, 
+				getColor());
+		locs.addAll(temp);
+		
+		return locs;
 	}
 
 }

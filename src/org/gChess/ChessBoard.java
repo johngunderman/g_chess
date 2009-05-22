@@ -99,6 +99,34 @@ public class ChessBoard {
 		return getPieceAt(loc) != null;
 	}
 	
+	/**
+	 * Grabs locations in a certain direction until it hits something:
+	 * a wall, a ChessPiece, whatnot. If the ChessPiece is on the other
+	 * "team" it is added to the ArrayList.
+	 * @param loc - The starting Location
+	 * @param direction - A member of the direction constants in Location
+	 * @param playerColor - Either ChessPiece.BLACK or ChessPiece.WHITE
+	 * @return ArrayList of Locations that are legal to move to in the given direction.
+	 */
+	public ArrayList<Location> locsInDirUntilBlocked(Location loc, int direction, int playerColor) {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		Location nextLoc = loc.getLocationInDir(direction);
+		while (nextLoc.isValid()) {
+			if (getPieceAt(nextLoc) == null) {
+				locs.add(nextLoc);
+			}
+			else if (getPieceAt(nextLoc).getColor() == playerColor) {
+				return locs;
+			}
+			else {
+				locs.add(nextLoc);
+				return locs;
+			}
+			nextLoc = nextLoc.getLocationInDir(direction);
+		}
+		return locs;
+	}
+	
 	
 	/**
 	 * This method WILL RETURN NULL if x,y are not on the board.
