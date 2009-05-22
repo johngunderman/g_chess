@@ -115,5 +115,9 @@ public abstract class ChessPiece {
 		return image;
 	}
 	
+	public ChessBoard getBoard(){
+		return cb;
+	}
+	
 	
 }
