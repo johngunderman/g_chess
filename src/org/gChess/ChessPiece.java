@@ -78,12 +78,18 @@ public abstract class ChessPiece {
 		ArrayList<Location> locs = getMoveLocations();
 		ArrayList<Location> returned = new ArrayList<Location>();
 		for (Location loc : locs) {
-			if (!cb.isOccupied(loc)) {
+			if (!cb.isOccupied(loc) && loc.isValid()) {
 				returned.add(loc);
+			}
+			if (cb.isOccupied(loc)){
+				if (cb.getPieceAt(loc).getColor() != getColor()){
+					returned.add(loc);
+				}
 			}
 		}
 		return returned;
 	}
+	
 	
 	//TODO finish grid access and rules for moving pieces
 	
