@@ -39,6 +39,18 @@ public class Pawn extends ChessPiece {
 				moves.add(loc.getLocationInDir(Location.LEFT));
 			}
 		}
+		else {
+			loc = loc.getLocationInDir(Location.BACK);
+			if (getBoard().getPieceAt(loc) == null){
+				moves.add(loc);
+			}
+			if (getBoard().getPieceAt(loc.getLocationInDir(Location.BACK_RIGHT)) != null){
+				moves.add(loc.getLocationInDir(Location.RIGHT));
+			}
+			if (getBoard().getPieceAt(loc.getLocationInDir(Location.BACK_LEFT)) != null){
+				moves.add(loc.getLocationInDir(Location.LEFT));
+			}
+		}
 		return moves;
 	}
 	
