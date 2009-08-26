@@ -25,6 +25,9 @@ public final class R {
         public static final int white_queen=0x7f02000b;
         public static final int white_rook=0x7f02000c;
     }
+    public static final class id {
+        public static final int AbsoluteLayout01=0x7f050000;
+    }
     public static final class layout {
         public static final int main=0x7f030000;
     }
